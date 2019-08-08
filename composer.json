@@ -3,7 +3,11 @@
     "description": "A Laravel Nova card.",
     "keywords": [
         "laravel",
-        "nova"
+        "nova",
+        "card",
+        "resources",
+        "listing",
+        "dashboard"
     ],
     "license": "MIT",
     "require": {
