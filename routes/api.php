@@ -33,7 +33,7 @@ Route::post('/fetch', function () {
     $items->map(function ($item) use ($resourceTitleColumn, $orderBy) {
         $item->makeVisible('id');
         $item->title = $item->{$resourceTitleColumn};
-        $item->readable_created_at = \Carbon\Carbon::parse($item->created_at)->diffForHumans();
+        $item->ordered_column = request()->json('readableDate', false) ? \Carbon\Carbon::parse($item->{$orderBy})->diffForHumans() : $item->{$orderBy};
     });
 
     return response()->json($items, 200);
