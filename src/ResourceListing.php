@@ -44,12 +44,12 @@ class ResourceListing extends Card
     }
 
     /**
-     * @param $resourceUrl
+     * @param $resourceUri
      * @return $this
      */
-    public function resourceUrl($resourceUrl) {
+    public function resourceUrl($resourceUri) {
         return $this->withMeta([
-            'resourceUrl' => $resourceUrl
+            'resourceUri' => $resourceUri
         ]);
     }
 
