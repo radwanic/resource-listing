@@ -268,6 +268,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['card'],
@@ -289,7 +292,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             'orderBy': this.card.orderBy,
             'order': this.card.order,
             'limit': this.card.limit,
-            'resourceTitleColumn': this.card.resourceTitleColumn
+            'resourceTitleColumn': this.card.resourceTitleColumn,
+            'readableDate': this.card.readableDate
         })).then(function (response) {
             _this.items = response.data;
             _this.loading = false;
@@ -335,45 +339,56 @@ var render = function() {
                     staticClass: "w-full",
                     attrs: { cellpadding: "0", cellspacing: "0" }
                   },
-                  _vm._l(_vm.items, function(item) {
-                    return _c("tr", { key: item.id, staticClass: "mb-2" }, [
-                      _c(
-                        "td",
-                        {
-                          staticClass:
-                            "w-3/5 border-t border-l border-r border-b border-50"
-                        },
-                        [
+                  [
+                    _c(
+                      "tbody",
+                      _vm._l(_vm.items, function(item) {
+                        return _c("tr", { key: item.id, staticClass: "mb-2" }, [
                           _c(
-                            "router-link",
+                            "td",
                             {
                               staticClass:
-                                "text-sm text-primary no-underline dim p-2",
-                              attrs: { to: "" + _vm.url + item.id }
+                                "p-2 border-t border-l border-r border-b border-50"
                             },
-                            [_c("span", [_vm._v(_vm._s(item.title))])]
+                            [
+                              _vm.card.resourceUri
+                                ? _c(
+                                    "router-link",
+                                    {
+                                      staticClass:
+                                        "text-sm text-primary no-underline dim",
+                                      attrs: {
+                                        to: "" + _vm.card.resourceUrl + item.id
+                                      }
+                                    },
+                                    [_c("p", [_vm._v(_vm._s(item.title))])]
+                                  )
+                                : _c("p", { staticClass: "text-sm dim" }, [
+                                    _vm._v(_vm._s(item.title))
+                                  ])
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "td",
+                            {
+                              staticClass:
+                                "text-sm p-2 text-right border-t border-r border-b border-50"
+                            },
+                            [
+                              _vm._v(
+                                "\n                            " +
+                                  _vm._s(item.ordered_column) +
+                                  "\n                        "
+                              )
+                            ]
                           )
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "td",
-                        {
-                          staticClass:
-                            "text-sm p-2 text-right w-2/5 border-t border-r border-b border-50"
-                        },
-                        [
-                          _vm._v(
-                            "\n                        " +
-                              _vm._s(item.readable_created_at) +
-                              "\n                    "
-                          )
-                        ]
-                      )
-                    ])
-                  }),
-                  0
+                        ])
+                      }),
+                      0
+                    )
+                  ]
                 )
               ]
         ],

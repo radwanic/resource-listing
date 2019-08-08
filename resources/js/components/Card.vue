@@ -9,16 +9,19 @@
 
             <template v-else>
                 <table cellpadding="0" cellspacing="0" class="w-full">
-                    <tr class="mb-2" v-for="item in items" :key="item.id">
-                        <td class="w-3/5 border-t border-l border-r border-b border-50">
-                            <router-link :to="`${url}${item.id}`" class="text-sm text-primary no-underline dim p-2">
-                                <span>{{ item.title }}</span>
-                            </router-link>
-                        </td>
-                        <td class="text-sm p-2 text-right w-2/5 border-t border-r border-b border-50">
-                            {{ item.readable_created_at }}
-                        </td>
-                    </tr>
+                    <tbody>
+                        <tr class="mb-2" v-for="item in items" :key="item.id">
+                            <td class="p-2 border-t border-l border-r border-b border-50">
+                                <router-link v-if="card.resourceUri" :to="`${card.resourceUrl}${item.id}`" class="text-sm text-primary no-underline dim">
+                                    <p>{{ item.title }}</p>
+                                </router-link>
+                                <p class="text-sm dim" v-else>{{ item.title }}</p>
+                            </td>
+                            <td class="text-sm p-2 text-right border-t border-r border-b border-50">
+                                {{ item.ordered_column }}
+                            </td>
+                        </tr>
+                    </tbody>
                 </table>
             </template>
         </div>
@@ -48,7 +51,8 @@
                     'orderBy': this.card.orderBy,
                     'order': this.card.order,
                     'limit': this.card.limit,
-                    'resourceTitleColumn': this.card.resourceTitleColumn
+                    'resourceTitleColumn': this.card.resourceTitleColumn,
+                    'readableDate': this.card.readableDate
                 }))
                 .then(response => {
                     this.items = response.data;
