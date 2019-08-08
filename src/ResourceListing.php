@@ -47,7 +47,7 @@ class ResourceListing extends Card
      * @param $resourceUri
      * @return $this
      */
-    public function resourceUrl($resourceUri) {
+    public function resourceUri($resourceUri) {
         return $this->withMeta([
             'resourceUri' => $resourceUri
         ]);
@@ -80,6 +80,16 @@ class ResourceListing extends Card
     public function order($order) {
         return $this->withMeta([
             'order' => $order
+        ]);
+    }
+
+    /**
+     * @param $readableDate
+     * @return $this
+     */
+    public function readableDate($readableDate) {
+        return $this->withMeta([
+            'readableDate' => $readableDate
         ]);
     }
 
