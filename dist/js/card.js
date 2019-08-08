@@ -358,7 +358,7 @@ var render = function() {
                                       staticClass:
                                         "text-sm text-primary no-underline dim",
                                       attrs: {
-                                        to: "" + _vm.card.resourceUrl + item.id
+                                        to: "" + _vm.card.resourceUri + item.id
                                       }
                                     },
                                     [_c("p", [_vm._v(_vm._s(item.title))])]

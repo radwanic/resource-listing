@@ -12,7 +12,7 @@
                     <tbody>
                         <tr class="mb-2" v-for="item in items" :key="item.id">
                             <td class="p-2 border-t border-l border-r border-b border-50">
-                                <router-link v-if="card.resourceUri" :to="`${card.resourceUrl}${item.id}`" class="text-sm text-primary no-underline dim">
+                                <router-link v-if="card.resourceUri" :to="`${card.resourceUri}${item.id}`" class="text-sm text-primary no-underline dim">
                                     <p>{{ item.title }}</p>
                                 </router-link>
                                 <p class="text-sm dim" v-else>{{ item.title }}</p>
